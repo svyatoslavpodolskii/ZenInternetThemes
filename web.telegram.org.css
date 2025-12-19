@@ -1,0 +1,44 @@
+/* Прозрачность основных контейнеров */
+:root {
+  --color-background: transparent !important;
+  --theme-background-color: transparent !important;
+  --color-borders: transparent !important;
+}
+
+/* Убираем фон подложки и изображений */
+body, 
+html, 
+#root, 
+.ThfRMqwq, 
+.C6IaXYew {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* Псевдоэлементы, которые часто создают эффект градиента или наложения */
+html.theme-dark .ThfRMqwq::before, 
+html.theme-dark .C6IaXYew::after {
+  display: none !important;
+}
+
+/* Возвращаем фон сообщениям (облачкам) */
+/* В Telegram Web K/A сообщения имеют классы .message или .Message-content */
+.message, 
+.Message-content, 
+.message-content {
+  background-color: var(--surface-color, #212121) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
+}
+
+/* Оставляем меню непрозрачным для удобства */
+.menu-container, 
+.settings-main-menu {
+  background-color: #000000 !important;
+  border: none !important;
+}
+
+/* Плавные переходы */
+* {
+  transition: background-color 0.3s ease-in-out !important;
+}

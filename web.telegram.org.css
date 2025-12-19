@@ -1,13 +1,13 @@
-/* Прозрачность основных контейнеров */
+/* tg-transparency $ Делает фон мессенджера прозрачным */
 :root {
   --color-background: transparent !important;
   --theme-background-color: transparent !important;
   --color-borders: transparent !important;
+  --color-light-shadow: transparent !important;
 }
 
-/* Убираем фон подложки и изображений */
+/* @ Убираем заливку основных контейнеров для прозрачности */
 body, 
-html, 
 #root, 
 .ThfRMqwq, 
 .C6IaXYew {
@@ -15,30 +15,34 @@ html,
   background-image: none !important;
 }
 
-/* Псевдоэлементы, которые часто создают эффект градиента или наложения */
+/* @ Удаляем темные наложения в темной теме */
 html.theme-dark .ThfRMqwq::before, 
-html.theme-dark .C6IaXYew::after {
+html.theme-dark .C6IaXYew:not(.K1xhz7U5):not(.CwoXMwaR)::after {
+  background: transparent !important;
   display: none !important;
 }
 
-/* Возвращаем фон сообщениям (облачкам) */
-/* В Telegram Web K/A сообщения имеют классы .message или .Message-content */
-.message, 
-.Message-content, 
-.message-content {
-  background-color: var(--surface-color, #212121) !important;
-  border-radius: 12px !important;
+/* tg-messages $ Возвращает фон облачкам сообщений */
+/* @ Селекторы для Telegram Web K и A */
+.Message-content,
+.message-content,
+.message,
+.bubbles-inner {
+  background-color: var(--color-background-own, #212121) !important;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
 }
 
-/* Оставляем меню непрозрачным для удобства */
-.menu-container, 
-.settings-main-menu {
-  background-color: #000000 !important;
-  border: none !important;
+/* @ Отдельно для входящих сообщений, если они стали прозрачными */
+.message-in .Message-content,
+.message-in .message-content {
+  background-color: var(--color-background-item, #2b2b2b) !important;
 }
 
-/* Плавные переходы */
-* {
-  transition: background-color 0.3s ease-in-out !important;
+/* tg-menu $ Оставляет меню и настройки непрозрачными */
+.menu-container, 
+.settings-main-menu,
+.new-network-menu {
+  background-color: #000000 !important;
+  border: none !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important;
 }
